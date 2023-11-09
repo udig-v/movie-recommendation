@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/styles.css" />
+    <title>Movie Recommendation System</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to the Movie Recommendation System</h1>
+      <p>Enter your movie preferences to get personalized recommendations:</p>
+
+      <form action="/recommendations" method="post">
+        {% for i in range(1, 6) %}
+        <label for="movie{{ i }}">Movie {{ i }}:</label>
+        <input type="text" name="movies[]" id="movie{{ i }}" required />
+        <label for="rating{{ i }}">Rating:</label>
+        <input
+          type="number"
+          name="ratings[]"
+          id="rating{{ i }}"
+          required
+          step="0.1"
+          min="0"
+          max="5"
+          placeholder="Rating (0-5)"
+        />
+        <br />
+        {% endfor %}
+
+        <input type="submit" value="Get Recommendations" />
+      </form>
+    </div>
+  </body>
+</html>
